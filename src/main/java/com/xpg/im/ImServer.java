@@ -1,10 +1,8 @@
 package com.xpg.im;
 
+import com.xpg.im.handler.WebSocketHandler;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -13,10 +11,15 @@ import io.netty.handler.codec.http.HttpServerCodec;
 import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * 服务器启动类
  */
 public class ImServer {
+
+    public static final Map<String, Channel> USERS = new ConcurrentHashMap<>(1024);
     public static void start() throws Exception {
         // 创建两个EventLoopGroup实例，bossGroup用于处理连接请求，workerGroup用于处理已连接客户端的读写操作
         EventLoopGroup bossGroup = new NioEventLoopGroup();

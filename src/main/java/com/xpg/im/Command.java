@@ -15,4 +15,7 @@ public class Command {
 
     //昵称
     private String name;
+
+    //测试数据
+    //{"code":10001,"name":"a"}
 }

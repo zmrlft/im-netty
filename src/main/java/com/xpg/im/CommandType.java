@@ -7,7 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CommandType {
 
+
     CONNECT(10001),
+
+    CHAT(10002),
     ERROR(-1),
 
     ;

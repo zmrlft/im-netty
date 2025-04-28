@@ -24,6 +24,10 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
                     System.out.println("connect");
                     ConnectionHandler.execute(channelHandlerContext, command);
                     break;
+                case CHAT:
+                    System.out.println("chat");
+                    ChatHandler.execute(channelHandlerContext, frame);
+                    break;
                 case ERROR:
                     System.out.println("error");
                     channelHandlerContext.channel().writeAndFlush(Result.fail("error"));

@@ -3,6 +3,7 @@ package com.xpg.im.handler;
 import cn.hutool.json.JSONUtil;
 import com.xpg.im.Command;
 import com.xpg.im.CommandType;
+import com.xpg.im.ImServer;
 import com.xpg.im.Result;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -27,6 +28,10 @@ public class WebSocketHandler extends SimpleChannelInboundHandler<TextWebSocketF
                 case CHAT:
                     System.out.println("chat");
                     ChatHandler.execute(channelHandlerContext, frame);
+                    break;
+                case JOIN_GROUP:
+                    System.out.println("join group");
+                    JoinGroupHandler.execute(channelHandlerContext, command);
                     break;
                 case ERROR:
                     System.out.println("error");

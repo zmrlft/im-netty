@@ -35,6 +35,10 @@ public class ChatHandler {
                         //测试{"code":10002,"name":"b","type":"1","target":"a","content":"hi"}
                     }
                     break;
+                case GROUP:
+                    ImServer.GROUP.writeAndFlush(Result.success("群聊消息（" + chat.getName() + "）",chat.getContent()));
+                    System.out.println("群聊消息（" + chat.getName() + "）"+chat.getContent());
+
                 default:
                     ctx.channel().writeAndFlush(Result.fail("不支持的消息类型"));
 

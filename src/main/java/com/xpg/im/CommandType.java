@@ -7,10 +7,22 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum CommandType {
 
-
+    /**
+     * 连接
+     */
     CONNECT(10001),
 
+    /**
+     * 聊天
+     */
     CHAT(10002),
+
+    /**
+     * 加入群聊
+     */
+    JOIN_GROUP(10003),
+
+
     ERROR(-1),
 
     ;
